@@ -1,10 +1,13 @@
 package guru.springframework.sfgdi.controllers;
 
 import guru.springframework.sfgdi.services.GreetingsService;
+import org.springframework.stereotype.Controller;
 
+@Controller
 public class ConstructorInjectedController {
     private final GreetingsService greetingsService;
 
+    // Autowired annotation is optional
     public ConstructorInjectedController(GreetingsService greetingsService) {
         this.greetingsService = greetingsService;
     }
