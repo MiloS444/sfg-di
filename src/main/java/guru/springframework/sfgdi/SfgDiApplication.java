@@ -1,9 +1,6 @@
 package guru.springframework.sfgdi;
 
-import guru.springframework.sfgdi.controllers.ConstructorInjectedController;
-import guru.springframework.sfgdi.controllers.MyController;
-import guru.springframework.sfgdi.controllers.PropertyInjectedController;
-import guru.springframework.sfgdi.controllers.SetterInjectedController;
+import guru.springframework.sfgdi.controllers.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -15,11 +12,13 @@ public class SfgDiApplication {
 		ConfigurableApplicationContext configurableApplicationContext
 				= SpringApplication.run(SfgDiApplication.class, args);
 
+		System.out.println("--- Testing Profiles ----");
+		I18nController i18nController = (I18nController) configurableApplicationContext.getBean("i18nController");
+		System.out.println(i18nController.getText());
+
+		System.out.println("--- Property ----");
 		MyController myController = (MyController) configurableApplicationContext.getBean("myController");
-
-		String controllerText = myController.getText();
-
-		System.out.println(controllerText);
+		System.out.println(myController.getText());
 
 		System.out.println("--- Property ----");
 		PropertyInjectedController propertyInjectedController
